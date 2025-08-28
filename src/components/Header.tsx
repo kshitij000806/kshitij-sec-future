@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Shield } from 'lucide-react';
+import { Menu, X, Shield, Moon, Sun } from 'lucide-react';
+import { useTheme } from 'next-themes';
 import { Button } from '@/components/ui/button';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -73,8 +75,20 @@ const Header: React.FC = () => {
             ))}
           </div>
 
-          {/* Security Status Badge */}
+          {/* Theme Toggle & Security Status */}
           <div className="hidden lg:flex items-center space-x-3">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              className="cyber-glow hover:bg-muted"
+            >
+              {theme === 'dark' ? (
+                <Sun className="h-4 w-4 text-cyber" />
+              ) : (
+                <Moon className="h-4 w-4 text-primary" />
+              )}
+            </Button>
             <div className="flex items-center space-x-2 bg-card border border-border rounded-full px-3 py-1.5">
               <div className="w-2 h-2 bg-cyber rounded-full animate-pulse-soft"></div>
               <span className="text-xs font-mono text-muted-foreground">
@@ -113,11 +127,25 @@ const Header: React.FC = () => {
                 </button>
               ))}
               <div className="border-t border-border pt-2 mt-2">
-                <div className="flex items-center space-x-2 px-3 py-2">
-                  <div className="w-2 h-2 bg-cyber rounded-full animate-pulse-soft"></div>
-                  <span className="text-xs font-mono text-muted-foreground">
-                    STATUS: SECURE
-                  </span>
+                <div className="flex items-center justify-between px-3 py-2">
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-cyber rounded-full animate-pulse-soft"></div>
+                    <span className="text-xs font-mono text-muted-foreground">
+                      STATUS: SECURE
+                    </span>
+                  </div>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                    className="cyber-glow"
+                  >
+                    {theme === 'dark' ? (
+                      <Sun className="h-4 w-4 text-cyber" />
+                    ) : (
+                      <Moon className="h-4 w-4 text-primary" />
+                    )}
+                  </Button>
                 </div>
               </div>
             </div>
