@@ -1,40 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Orbitron:wght@400;500;700;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Cybersecurity Portfolio Design System - All colors MUST be HSL */
 
 @layer base {
   :root {
+    /* Core Brand Colors */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
+    --foreground: 220 13% 9%;
+    
+    /* Cards & Surfaces */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
+    --card-foreground: 220 13% 9%;
+    
+    /* Interactive Elements */
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --popover-foreground: 220 13% 9%;
+    
+    /* Primary Brand - Professional Blue */
+    --primary: 214 84% 56%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 214 84% 66%;
+    
+    /* Secondary - Clean Grey */
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 13% 9%;
+    
+    /* Cyber Accent - Matrix Green */
+    --cyber: 120 100% 50%;
+    --cyber-foreground: 220 13% 9%;
+    --cyber-glow: 120 100% 40%;
+    
+    /* Terminal Theme */
+    --terminal-bg: 220 13% 9%;
+    --terminal-text: 120 100% 80%;
+    --terminal-prompt: 214 84% 56%;
+    
+    /* Status Colors */
+    --success: 120 100% 40%;
+    --warning: 45 100% 60%;
+    --danger: 0 84% 60%;
+    
+    /* Muted Elements */
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+    
+    /* Borders & Inputs */
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 214 84% 56%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(214 84% 56%), hsl(214 84% 66%));
+    --gradient-cyber: linear-gradient(135deg, hsl(120 100% 50%), hsl(165 100% 50%));
+    --gradient-dark: linear-gradient(135deg, hsl(220 13% 9%), hsl(220 13% 15%));
+    
+    /* Shadows & Effects */
+    --shadow-soft: 0 2px 10px hsl(220 13% 9% / 0.1);
+    --shadow-cyber: 0 0 20px hsl(120 100% 50% / 0.3);
+    --shadow-primary: 0 4px 20px hsl(214 84% 56% / 0.2);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --radius: 0.5rem;
 
@@ -56,33 +87,50 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    /* Dark Mode - Cyberpunk Aesthetic */
+    --background: 220 27% 4%;
+    --foreground: 0 0% 95%;
+    
+    --card: 220 27% 6%;
+    --card-foreground: 0 0% 95%;
+    
+    --popover: 220 27% 6%;
+    --popover-foreground: 0 0% 95%;
+    
+    /* Primary in Dark - Bright Cyber Blue */
+    --primary: 214 100% 70%;
+    --primary-foreground: 220 27% 4%;
+    --primary-glow: 214 100% 80%;
+    
+    --secondary: 220 27% 12%;
+    --secondary-foreground: 0 0% 95%;
+    
+    /* Enhanced Cyber Green for Dark Mode */
+    --cyber: 120 100% 60%;
+    --cyber-foreground: 220 27% 4%;
+    --cyber-glow: 120 100% 50%;
+    
+    /* Dark Terminal */
+    --terminal-bg: 220 27% 2%;
+    --terminal-text: 120 100% 85%;
+    --terminal-prompt: 214 100% 70%;
+    
+    --muted: 220 27% 12%;
+    --muted-foreground: 220 9% 65%;
+    
+    --border: 220 27% 15%;
+    --input: 220 27% 15%;
+    --ring: 214 100% 70%;
+    
+    /* Dark Mode Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(214 100% 70%), hsl(265 100% 70%));
+    --gradient-cyber: linear-gradient(135deg, hsl(120 100% 60%), hsl(165 100% 60%));
+    --gradient-dark: linear-gradient(135deg, hsl(220 27% 2%), hsl(220 27% 8%));
+    
+    /* Enhanced Dark Shadows */
+    --shadow-soft: 0 4px 20px hsl(220 27% 2% / 0.8);
+    --shadow-cyber: 0 0 30px hsl(120 100% 60% / 0.4);
+    --shadow-primary: 0 4px 20px hsl(214 100% 70% / 0.3);
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -100,6 +148,139 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Terminal Styling */
+  .terminal {
+    background: hsl(var(--terminal-bg));
+    color: hsl(var(--terminal-text));
+    font-family: 'JetBrains Mono', monospace;
+    border: 1px solid hsl(var(--border));
+    border-radius: 12px;
+    box-shadow: var(--shadow-cyber);
+  }
+  
+  .terminal-prompt {
+    color: hsl(var(--terminal-prompt));
+  }
+  
+  /* Cyber Glow Effects */
+  .cyber-glow {
+    box-shadow: 0 0 20px hsl(var(--cyber) / 0.5);
+  }
+  
+  .primary-glow {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+  
+  /* Text Effects */
+  .gradient-text {
+    background: var(--gradient-primary);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .cyber-text {
+    background: var(--gradient-cyber);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  /* Animation Classes */
+  .animate-pulse-soft {
+    animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  /* Hover Animations */
+  .hover-lift {
+    transition: var(--transition-smooth);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-primary);
+  }
+  
+  /* Matrix Code Rain Effect */
+  .matrix-rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.1;
+  }
+}
+
+@layer utilities {
+  /* Custom Animations */
+  @keyframes pulse-soft {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  @keyframes matrix-fall {
+    0% {
+      transform: translateY(-100vh);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes typewriter {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  
+  @keyframes blink {
+    0%, 50% {
+      opacity: 1;
+    }
+    51%, 100% {
+      opacity: 0;
+    }
   }
 }
