@@ -1,36 +1,14 @@
-import React, { useState } from 'react';
-import { Shield, Code, Users, Award, Mail, Phone, Linkedin, Github, Terminal as TerminalIcon, Send } from 'lucide-react';
+import React from 'react';
+import { Shield, Code, Users, Award, Mail, Phone, Linkedin, Github, Terminal as TerminalIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
 import Header from '@/components/Header';
 import Terminal from '@/components/Terminal';
 import Counter from '@/components/Counter';
-import kshitijPortrait from '@/assets/kshitij-new-portrait.jpg';
+import kshitijPortrait from '@/assets/kshitij-portrait.jpg';
 
 const Index = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    // Reset form
-    setFormData({ name: '', email: '', subject: '', message: '' });
-  };
   const stats = [
     { number: 15, suffix: '+', label: 'Certifications Earned' },
     { number: 7, suffix: '+', label: 'Projects Deployed' },
@@ -51,13 +29,8 @@ const Index = () => {
     'Cisco Certified - Ethical Hacker',
     'Cisco Certified - Cyber Threat Management',
     'Cisco Certified - Endpoint Security',
-    'Cisco Certified - Introduction to Cybersecurity',
     'EC-Council - Advanced Penetration Testing',
-    'EC-Council - TypeScript Certification',
-    'EC-Council - SQL Injection Attacks',
-    'EC-Council - Dark Web & Cryptocurrency',
     'Microsoft - Cybersecurity Essentials',
-    'LinkedIn Learning - Cybersecurity Essentials',
     'ASD Academy - Advanced Offensive Security',
   ];
 
@@ -85,18 +58,6 @@ const Index = () => {
       description: 'Advanced threat detection and classification system using YARA rules',
       tech: 'YARA, Python, Machine Learning',
       type: 'Security Research'
-    },
-    {
-      title: 'ESP Duno Coin Mining',
-      description: 'Experimental IoT-based cryptocurrency concepts for embedded systems',
-      tech: 'ESP32, Blockchain, IoT',
-      type: 'IoT Innovation'
-    },
-    {
-      title: 'SQL Injection Toolkit',
-      description: 'Ethical penetration testing automation with multiple attack vectors',
-      tech: 'Python, SQL, Security Testing',
-      type: 'Red Team'
     }
   ];
 
@@ -231,7 +192,7 @@ const Index = () => {
                     <p className="font-semibold">BE VTU (2022-26)</p>
                     <p>Current Student</p>
                     <p className="text-sm text-muted-foreground">
-                      Navkis College of Engineering Student
+                      BITS Pilani Goa Cybersecurity Workshop Graduate
                     </p>
                   </div>
                 </CardContent>
@@ -387,118 +348,6 @@ const Index = () => {
                   <p className="text-sm text-muted-foreground">Code Repository</p>
                 </CardContent>
               </Card>
-            </div>
-
-            <div className="mt-12 grid lg:grid-cols-2 gap-8">
-              {/* Contact Form */}
-              <Card className="hover-lift">
-                <CardHeader>
-                  <CardTitle className="flex items-center space-x-2">
-                    <Send className="h-5 w-5 text-primary" />
-                    <span>Send Message</span>
-                  </CardTitle>
-                  <CardDescription>
-                    Initiate secure communication channel
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="name">Name</Label>
-                        <Input
-                          id="name"
-                          name="name"
-                          type="text"
-                          value={formData.name}
-                          onChange={handleInputChange}
-                          placeholder="Your name"
-                          required
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="email">Email</Label>
-                        <Input
-                          id="email"
-                          name="email"
-                          type="email"
-                          value={formData.email}
-                          onChange={handleInputChange}
-                          placeholder="your@email.com"
-                          required
-                        />
-                      </div>
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="subject">Subject</Label>
-                      <Input
-                        id="subject"
-                        name="subject"
-                        type="text"
-                        value={formData.subject}
-                        onChange={handleInputChange}
-                        placeholder="Message subject"
-                        required
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="message">Message</Label>
-                      <Textarea
-                        id="message"
-                        name="message"
-                        value={formData.message}
-                        onChange={handleInputChange}
-                        placeholder="Your encrypted message..."
-                        rows={4}
-                        required
-                      />
-                    </div>
-                    <Button type="submit" className="w-full bg-gradient-primary hover:scale-105 transition-transform">
-                      <Send className="h-4 w-4 mr-2" />
-                      Transmit Message
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
-
-              {/* Security Notice */}
-              <div className="space-y-6">
-                <Card className="hover-lift">
-                  <CardContent className="p-6">
-                    <h3 className="font-semibold mb-4 flex items-center">
-                      <Shield className="h-5 w-5 text-cyber mr-2" />
-                      Security Protocols
-                    </h3>
-                    <div className="space-y-3 text-sm text-muted-foreground">
-                      <div className="flex items-center space-x-2">
-                        <div className="w-2 h-2 bg-cyber rounded-full" />
-                        <span>End-to-end encryption enabled</span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <div className="w-2 h-2 bg-cyber rounded-full" />
-                        <span>Response time: 24-48 hours</span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <div className="w-2 h-2 bg-cyber rounded-full" />
-                        <span>All communications logged securely</span>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="hover-lift">
-                  <CardContent className="p-6">
-                    <h3 className="font-semibold mb-4">Collaboration Opportunities</h3>
-                    <div className="space-y-2 text-sm text-muted-foreground">
-                      <p>• Speaking engagements</p>
-                      <p>• Research partnerships</p>
-                      <p>• Open source projects</p>
-                      <p>• Cybersecurity consulting</p>
-                      <p>• Educational workshops</p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
             </div>
 
             <div className="mt-12 p-6 bg-card border border-border rounded-lg">
