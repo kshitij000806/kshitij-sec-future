@@ -249,38 +249,40 @@ const Index = () => {
               </p>
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
-              {/* Skills Chart */}
-              <div>
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+              {/* Core Competencies */}
+              <div className="h-full">
                 <h3 className="text-2xl font-semibold mb-6 flex items-center">
                   <Code className="h-6 w-6 text-cyber mr-2" />
                   Core Competencies
                 </h3>
-                <div className="space-y-6">
+                <div className="space-y-4">
                   {skills.map((skill, index) => (
-                    <div key={index} className="group">
-                      <div className="flex justify-between mb-2">
-                        <span className="font-medium text-sm sm:text-base">{skill.name}</span>
-                        <span className="text-primary font-mono text-sm sm:text-base">{skill.level}%</span>
-                      </div>
-                      <div className="w-full bg-muted rounded-full h-2 overflow-hidden">
-                        <div 
-                          className="bg-gradient-primary h-2 rounded-full transition-all duration-1000 ease-out group-hover:shadow-glow"
-                          style={{ width: `${skill.level}%` }}
-                        />
-                      </div>
-                    </div>
+                    <Card key={index} className="hover-lift transition-all duration-300 hover:shadow-lg hover:border-cyber/30">
+                      <CardContent className="p-4">
+                        <div className="flex justify-between items-center mb-3">
+                          <span className="font-medium text-sm sm:text-base">{skill.name}</span>
+                          <span className="text-primary font-mono text-sm sm:text-base font-semibold">{skill.level}%</span>
+                        </div>
+                        <div className="w-full bg-muted rounded-full h-2 overflow-hidden">
+                          <div 
+                            className="bg-gradient-primary h-2 rounded-full transition-all duration-1000 ease-out hover:shadow-glow"
+                            style={{ width: `${skill.level}%` }}
+                          />
+                        </div>
+                      </CardContent>
+                    </Card>
                   ))}
                 </div>
               </div>
 
-              {/* Certifications */}
-              <div>
+              {/* Elite Certifications */}
+              <div className="h-full">
                 <h3 className="text-2xl font-semibold mb-6 flex items-center">
                   <Award className="h-6 w-6 text-cyber mr-2" />
                   Elite Certifications
                 </h3>
-                <div className="grid gap-4">
+                <div className="space-y-4">
                   {certifications.map((cert, index) => (
                     <Card key={index} className="hover-lift transition-all duration-300 hover:shadow-lg hover:border-cyber/30">
                       <CardContent className="p-4">
