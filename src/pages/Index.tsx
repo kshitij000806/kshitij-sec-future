@@ -192,7 +192,7 @@ const Index = () => {
                     <p className="font-semibold">BE VTU (2022-26)</p>
                     <p>Current Student</p>
                     <p className="text-sm text-muted-foreground">
-                      BITS Pilani Goa Cybersecurity Workshop Graduate
+                      Navkis College of Engineering Student
                     </p>
                   </div>
                 </CardContent>
