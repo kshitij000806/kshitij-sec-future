@@ -187,7 +187,7 @@ const Terminal: React.FC<TerminalProps> = ({ className = '' }) => {
         {history.map((item, index) => (
           <div key={index}>
             <div className="flex items-center space-x-2">
-              <span className="terminal-prompt font-semibold">kshitij@sec-lair:~$</span>
+              <span className="terminal-prompt font-semibold">kshitij@sec-future:~$</span>
               <span className="text-white">{item.command}</span>
             </div>
             <div className="ml-4 mt-1">
@@ -206,7 +206,7 @@ const Terminal: React.FC<TerminalProps> = ({ className = '' }) => {
       </div>
       
       <form onSubmit={handleSubmit} className="flex items-center space-x-2 mt-4">
-        <span className="terminal-prompt font-semibold flex-shrink-0">kshitij@sec-lair:~$</span>
+        <span className="terminal-prompt font-semibold flex-shrink-0">kshitij@sec-future:~$</span>
         <input
           ref={inputRef}
           type="text"
