@@ -1,36 +1,14 @@
-import React, { useState } from 'react';
-import { Shield, Code, Users, Award, Mail, Phone, Linkedin, Github, Terminal as TerminalIcon, Send } from 'lucide-react';
+import React from 'react';
+import { Shield, Code, Users, Award, Mail, Phone, Linkedin, Github, Terminal as TerminalIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
 import Header from '@/components/Header';
 import Terminal from '@/components/Terminal';
 import Counter from '@/components/Counter';
-import kshitijPortrait from '@/assets/kshitij-new-portrait.jpg';
+import kshitijPortrait from '@/assets/kshitij-portrait.jpg';
 
 const Index = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    // Reset form
-    setFormData({ name: '', email: '', subject: '', message: '' });
-  };
   const stats = [
     { number: 15, suffix: '+', label: 'Certifications Earned' },
     { number: 7, suffix: '+', label: 'Projects Deployed' },
@@ -48,12 +26,12 @@ const Index = () => {
   ];
 
   const certifications = [
-    { name: 'Cisco Certified - Ethical Hacker', provider: 'Cisco', level: 'Expert' },
-    { name: 'EC-Council - Advanced Penetration Testing', provider: 'EC-Council', level: 'Advanced' },
-    { name: 'Cisco Certified - Cyber Threat Management', provider: 'Cisco', level: 'Professional' },
-    { name: 'ASD Academy - Advanced Offensive Security', provider: 'ASD Academy', level: 'Advanced' },
-    { name: 'Cisco Certified - Endpoint Security', provider: 'Cisco', level: 'Professional' },
-    { name: 'Microsoft - Cybersecurity Essentials', provider: 'Microsoft', level: 'Fundamental' }
+    'Cisco Certified - Ethical Hacker',
+    'Cisco Certified - Cyber Threat Management',
+    'Cisco Certified - Endpoint Security',
+    'EC-Council - Advanced Penetration Testing',
+    'Microsoft - Cybersecurity Essentials',
+    'ASD Academy - Advanced Offensive Security',
   ];
 
   const projects = [
@@ -80,18 +58,6 @@ const Index = () => {
       description: 'Advanced threat detection and classification system using YARA rules',
       tech: 'YARA, Python, Machine Learning',
       type: 'Security Research'
-    },
-    {
-      title: 'ESP Duno Coin Mining',
-      description: 'Experimental IoT-based cryptocurrency concepts for embedded systems',
-      tech: 'ESP32, Blockchain, IoT',
-      type: 'IoT Innovation'
-    },
-    {
-      title: 'SQL Injection Toolkit',
-      description: 'Ethical penetration testing automation with multiple attack vectors',
-      tech: 'Python, SQL, Security Testing',
-      type: 'Red Team'
     }
   ];
 
@@ -226,7 +192,7 @@ const Index = () => {
                     <p className="font-semibold">BE VTU (2022-26)</p>
                     <p>Current Student</p>
                     <p className="text-sm text-muted-foreground">
-                      Navkis College of Engineering Student
+                      BITS Pilani Goa Cybersecurity Workshop Graduate
                     </p>
                   </div>
                 </CardContent>
@@ -249,7 +215,7 @@ const Index = () => {
               </p>
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+            <div className="grid lg:grid-cols-2 gap-12">
               {/* Skills Chart */}
               <div>
                 <h3 className="text-2xl font-semibold mb-6 flex items-center">
@@ -258,14 +224,14 @@ const Index = () => {
                 </h3>
                 <div className="space-y-6">
                   {skills.map((skill, index) => (
-                    <div key={index} className="group">
+                    <div key={index}>
                       <div className="flex justify-between mb-2">
-                        <span className="font-medium text-sm sm:text-base">{skill.name}</span>
-                        <span className="text-primary font-mono text-sm sm:text-base">{skill.level}%</span>
+                        <span className="font-medium">{skill.name}</span>
+                        <span className="text-primary font-mono">{skill.level}%</span>
                       </div>
-                      <div className="w-full bg-muted rounded-full h-2 overflow-hidden">
+                      <div className="w-full bg-muted rounded-full h-2">
                         <div 
-                          className="bg-gradient-primary h-2 rounded-full transition-all duration-1000 ease-out group-hover:shadow-glow"
+                          className="bg-gradient-primary h-2 rounded-full transition-all duration-1000 ease-out"
                           style={{ width: `${skill.level}%` }}
                         />
                       </div>
@@ -278,38 +244,14 @@ const Index = () => {
               <div>
                 <h3 className="text-2xl font-semibold mb-6 flex items-center">
                   <Award className="h-6 w-6 text-cyber mr-2" />
-                  Elite Certifications
+                  Certifications
                 </h3>
-                <div className="grid gap-4">
+                <div className="space-y-3">
                   {certifications.map((cert, index) => (
-                    <Card key={index} className="hover-lift transition-all duration-300 hover:shadow-lg hover:border-cyber/30">
-                      <CardContent className="p-4">
-                        <div className="flex items-start justify-between">
-                          <div className="flex-1">
-                            <div className="flex items-center space-x-2 mb-2">
-                              <Award className="h-4 w-4 text-cyber flex-shrink-0" />
-                              <Badge 
-                                variant={cert.level === 'Expert' ? 'destructive' : cert.level === 'Advanced' ? 'default' : 'secondary'}
-                                className="text-xs"
-                              >
-                                {cert.level}
-                              </Badge>
-                            </div>
-                            <h4 className="font-semibold text-sm sm:text-base leading-tight mb-1">
-                              {cert.name}
-                            </h4>
-                            <p className="text-xs text-muted-foreground">
-                              {cert.provider}
-                            </p>
-                          </div>
-                          <div className="ml-3 flex-shrink-0">
-                            <div className="w-8 h-8 rounded-full bg-gradient-primary/10 flex items-center justify-center">
-                              <div className="w-2 h-2 bg-cyber rounded-full animate-pulse-soft" />
-                            </div>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
+                    <div key={index} className="flex items-center space-x-3 p-3 bg-card rounded-lg border border-border hover-lift">
+                      <div className="w-2 h-2 bg-cyber rounded-full flex-shrink-0" />
+                      <span className="font-medium">{cert}</span>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -331,28 +273,25 @@ const Index = () => {
               </p>
             </div>
 
-            <div className="grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
+            <div className="grid md:grid-cols-2 gap-8">
               {projects.map((project, index) => (
-                <Card key={index} className="hover-lift transition-all duration-300 hover:shadow-xl hover:border-cyber/30">
-                  <CardHeader className="pb-3">
-                    <div className="flex justify-between items-start mb-3">
-                      <Badge 
-                        variant={project.type.includes('Red') ? 'destructive' : project.type.includes('IoT') ? 'default' : 'secondary'}
-                        className="text-xs"
-                      >
+                <Card key={index} className="hover-lift">
+                  <CardHeader>
+                    <div className="flex justify-between items-start mb-2">
+                      <Badge variant={project.type.includes('Red') ? 'destructive' : project.type.includes('IoT') ? 'default' : 'secondary'}>
                         {project.type}
                       </Badge>
                     </div>
-                    <CardTitle className="text-lg xl:text-xl leading-tight">{project.title}</CardTitle>
-                    <CardDescription className="text-sm leading-relaxed">{project.description}</CardDescription>
+                    <CardTitle className="text-xl">{project.title}</CardTitle>
+                    <CardDescription>{project.description}</CardDescription>
                   </CardHeader>
-                  <CardContent className="pt-0">
-                    <div className="space-y-4">
+                  <CardContent>
+                    <div className="space-y-3">
                       <div>
-                        <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Tech Stack</span>
-                        <p className="font-mono text-sm mt-1 text-foreground">{project.tech}</p>
+                        <span className="text-sm font-medium text-muted-foreground">Tech Stack:</span>
+                        <p className="font-mono text-sm">{project.tech}</p>
                       </div>
-                      <Button variant="outline" size="sm" className="w-full hover:bg-cyber/10 hover:border-cyber">
+                      <Button variant="outline" size="sm" className="w-full">
                         View Details
                       </Button>
                     </div>
@@ -377,150 +316,38 @@ const Index = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-              <Card className="hover-lift transition-all duration-300 hover:shadow-lg hover:border-primary/30">
-                <CardContent className="p-4 lg:p-6 text-center">
-                  <Mail className="h-6 w-6 lg:h-8 lg:w-8 text-primary mx-auto mb-2 lg:mb-3" />
-                  <h3 className="font-semibold mb-1 lg:mb-2 text-sm lg:text-base">Email</h3>
-                  <p className="text-xs lg:text-sm text-muted-foreground break-all">kshitijmk414@gmail.com</p>
-                </CardContent>
-              </Card>
-
-              <Card className="hover-lift transition-all duration-300 hover:shadow-lg hover:border-primary/30">
-                <CardContent className="p-4 lg:p-6 text-center">
-                  <Phone className="h-6 w-6 lg:h-8 lg:w-8 text-primary mx-auto mb-2 lg:mb-3" />
-                  <h3 className="font-semibold mb-1 lg:mb-2 text-sm lg:text-base">Phone</h3>
-                  <p className="text-xs lg:text-sm text-muted-foreground">+91 8867183845</p>
-                </CardContent>
-              </Card>
-
-              <Card className="hover-lift transition-all duration-300 hover:shadow-lg hover:border-primary/30">
-                <CardContent className="p-4 lg:p-6 text-center">
-                  <Linkedin className="h-6 w-6 lg:h-8 lg:w-8 text-primary mx-auto mb-2 lg:mb-3" />
-                  <h3 className="font-semibold mb-1 lg:mb-2 text-sm lg:text-base">LinkedIn</h3>
-                  <p className="text-xs lg:text-sm text-muted-foreground">Professional Network</p>
-                </CardContent>
-              </Card>
-
-              <Card className="hover-lift transition-all duration-300 hover:shadow-lg hover:border-primary/30">
-                <CardContent className="p-4 lg:p-6 text-center">
-                  <Github className="h-6 w-6 lg:h-8 lg:w-8 text-primary mx-auto mb-2 lg:mb-3" />
-                  <h3 className="font-semibold mb-1 lg:mb-2 text-sm lg:text-base">GitHub</h3>
-                  <p className="text-xs lg:text-sm text-muted-foreground">Code Repository</p>
-                </CardContent>
-              </Card>
-            </div>
-
-            <div className="mt-12 grid lg:grid-cols-2 gap-8">
-              {/* Contact Form */}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               <Card className="hover-lift">
-                <CardHeader>
-                  <CardTitle className="flex items-center space-x-2">
-                    <Send className="h-5 w-5 text-primary" />
-                    <span>Send Message</span>
-                  </CardTitle>
-                  <CardDescription>
-                    Initiate secure communication channel
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="name">Name</Label>
-                        <Input
-                          id="name"
-                          name="name"
-                          type="text"
-                          value={formData.name}
-                          onChange={handleInputChange}
-                          placeholder="Your name"
-                          required
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="email">Email</Label>
-                        <Input
-                          id="email"
-                          name="email"
-                          type="email"
-                          value={formData.email}
-                          onChange={handleInputChange}
-                          placeholder="your@email.com"
-                          required
-                        />
-                      </div>
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="subject">Subject</Label>
-                      <Input
-                        id="subject"
-                        name="subject"
-                        type="text"
-                        value={formData.subject}
-                        onChange={handleInputChange}
-                        placeholder="Message subject"
-                        required
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="message">Message</Label>
-                      <Textarea
-                        id="message"
-                        name="message"
-                        value={formData.message}
-                        onChange={handleInputChange}
-                        placeholder="Your encrypted message..."
-                        rows={4}
-                        required
-                      />
-                    </div>
-                    <Button type="submit" className="w-full bg-gradient-primary hover:scale-105 transition-transform">
-                      <Send className="h-4 w-4 mr-2" />
-                      Transmit Message
-                    </Button>
-                  </form>
+                <CardContent className="p-6 text-center">
+                  <Mail className="h-8 w-8 text-primary mx-auto mb-3" />
+                  <h3 className="font-semibold mb-2">Email</h3>
+                  <p className="text-sm text-muted-foreground">kshitijmk414@gmail.com</p>
                 </CardContent>
               </Card>
 
-              {/* Security Notice */}
-              <div className="space-y-6">
-                <Card className="hover-lift">
-                  <CardContent className="p-6">
-                    <h3 className="font-semibold mb-4 flex items-center">
-                      <Shield className="h-5 w-5 text-cyber mr-2" />
-                      Security Protocols
-                    </h3>
-                    <div className="space-y-3 text-sm text-muted-foreground">
-                      <div className="flex items-center space-x-2">
-                        <div className="w-2 h-2 bg-cyber rounded-full" />
-                        <span>End-to-end encryption enabled</span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <div className="w-2 h-2 bg-cyber rounded-full" />
-                        <span>Response time: 24-48 hours</span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <div className="w-2 h-2 bg-cyber rounded-full" />
-                        <span>All communications logged securely</span>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+              <Card className="hover-lift">
+                <CardContent className="p-6 text-center">
+                  <Phone className="h-8 w-8 text-primary mx-auto mb-3" />
+                  <h3 className="font-semibold mb-2">Phone</h3>
+                  <p className="text-sm text-muted-foreground">+91 8867183845</p>
+                </CardContent>
+              </Card>
 
-                <Card className="hover-lift">
-                  <CardContent className="p-6">
-                    <h3 className="font-semibold mb-4">Collaboration Opportunities</h3>
-                    <div className="space-y-2 text-sm text-muted-foreground">
-                      <p>• Speaking engagements</p>
-                      <p>• Research partnerships</p>
-                      <p>• Open source projects</p>
-                      <p>• Cybersecurity consulting</p>
-                      <p>• Educational workshops</p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
+              <Card className="hover-lift">
+                <CardContent className="p-6 text-center">
+                  <Linkedin className="h-8 w-8 text-primary mx-auto mb-3" />
+                  <h3 className="font-semibold mb-2">LinkedIn</h3>
+                  <p className="text-sm text-muted-foreground">Professional Network</p>
+                </CardContent>
+              </Card>
+
+              <Card className="hover-lift">
+                <CardContent className="p-6 text-center">
+                  <Github className="h-8 w-8 text-primary mx-auto mb-3" />
+                  <h3 className="font-semibold mb-2">GitHub</h3>
+                  <p className="text-sm text-muted-foreground">Code Repository</p>
+                </CardContent>
+              </Card>
             </div>
 
             <div className="mt-12 p-6 bg-card border border-border rounded-lg">
